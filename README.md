@@ -1,36 +1,178 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎓 CampusIQ
 
-## Getting Started
+### Modern College Discovery & Comparison Platform
 
-First, run the development server:
+CampusIQ is a production-style frontend MVP built to help students discover, compare and evaluate colleges through a clean and modern user experience.
+
+Designed with a strong focus on usability, responsive design and frontend architecture, the platform simplifies the college research process using interactive comparison flows and intelligent recommendation features.
+
+---
+
+# 🚀 Live Demo
+
+🔗 https://campusiq-flame.vercel.app
+
+# 💻 GitHub Repository
+
+🔗 https://github.com/riyajha200905-sketch/campusiq
+
+---
+
+# ✨ Features
+
+## 🔍 College Search & Discovery
+
+- Search colleges instantly by name or location
+- Responsive search experience
+- Clean filtering workflow
+- Modern dark-themed interface
+
+---
+
+## 🏫 College Detail Experience
+
+Interactive modal-based college detail system including:
+
+- College overview
+- Placement insights
+- Fee information
+- Popular courses
+- Student reviews
+
+---
+
+## ⚖️ Compare Colleges
+
+Compare multiple colleges side-by-side using:
+
+- Fees
+- Average placements
+- Ratings
+- Locations
+
+Designed to provide quick decision-making insights for students.
+
+---
+
+## 🧠 College Predictor Tool
+
+Students can:
+
+- Select exam type
+- Enter rank
+- Receive recommended colleges instantly
+
+Built using logic-driven recommendation mapping.
+
+---
+
+# 🖼️ UI Highlights
+
+- Fully responsive layout
+- Modern glassmorphism-inspired design
+- Dark premium UI
+- Reusable component structure
+- Interactive cards and modals
+- Smooth user experience
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+
+## Deployment
+- Vercel
+
+---
+
+# 🧱 Architecture Decisions
+
+This MVP focuses heavily on frontend engineering, UI architecture and user experience.
+
+The selected features prioritize:
+
+- search UX
+- comparison flows
+- responsive layouts
+- reusable components
+- frontend state handling
+
+Persistent backend/database layers such as PostgreSQL and Prisma ORM were intentionally deferred for future iterations since the chosen MVP features primarily focus on frontend interaction and usability.
+
+---
+
+# 📂 Project Structure
+
+```bash
+app/
+ ├── layout.tsx
+ ├── page.tsx
+ ├── globals.css
+```
+
+---
+
+# ⚡ Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/riyajha200905-sketch/campusiq.git
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+# 📈 Future Improvements
 
-To learn more about Next.js, take a look at the following resources:
+- Authentication system
+- Saved colleges
+- Saved comparisons
+- Backend API integration
+- PostgreSQL + Prisma ORM
+- Real datasets & rankings
+- AI-powered recommendations
+- Discussion & Q&A system
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# 👩‍💻 Author
 
-## Deploy on Vercel
+### Riya Jha
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Built as a frontend MVP for a startup internship assignment using modern frontend engineering practices.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+# ⭐ Key Focus Areas
+
+✔ Search UX  
+✔ Filtering Experience  
+✔ Comparison Flows  
+✔ Responsive Design  
+✔ Reusable UI Systems  
+✔ Frontend Architecture  
+✔ Interactive User Experience  
+✔ Production-style MVP Development
