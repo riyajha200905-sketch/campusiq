@@ -7,6 +7,7 @@ import {
   Sparkles,
   Star,
   ArrowRight,
+  X,
 } from "lucide-react";
 
 export default function Home() {
@@ -62,6 +63,10 @@ export default function Home() {
   ];
 
   const [search, setSearch] = useState("");
+  const [selectedCollege, setSelectedCollege] = useState<any>(null);
+
+  const [rank, setRank] = useState("");
+  const [recommendation, setRecommendation] = useState("");
 
   const filteredColleges = colleges.filter(
     (college) =>
@@ -72,6 +77,28 @@ export default function Home() {
         .toLowerCase()
         .includes(search.toLowerCase())
   );
+
+  const predictCollege = () => {
+    const rankNumber = Number(rank);
+
+    if (rankNumber <= 1000) {
+      setRecommendation(
+        "IIT Delhi, IIT Bombay, IIT Madras"
+      );
+    } else if (rankNumber <= 5000) {
+      setRecommendation(
+        "BITS Pilani, IIIT Hyderabad, NIT Trichy"
+      );
+    } else if (rankNumber <= 15000) {
+      setRecommendation(
+        "MIT Manipal, RVCE, VIT Vellore"
+      );
+    } else {
+      setRecommendation(
+        "SRM University, PES University, Amity University"
+      );
+    }
+  };
 
   return (
     <main className="min-h-screen bg-[#060606] text-white">
@@ -237,21 +264,17 @@ export default function Home() {
 
               <div className="p-6">
 
-                <div className="flex items-start justify-between">
+                <div>
 
-                  <div>
+                  <h3 className="text-2xl font-semibold tracking-tight">
+                    {college.name}
+                  </h3>
 
-                    <h3 className="text-2xl font-semibold tracking-tight">
-                      {college.name}
-                    </h3>
+                  <div className="flex items-center gap-2 mt-3 text-zinc-500">
 
-                    <div className="flex items-center gap-2 mt-3 text-zinc-500">
+                    <MapPin size={15} />
 
-                      <MapPin size={15} />
-
-                      <p>{college.location}</p>
-
-                    </div>
+                    <p>{college.location}</p>
 
                   </div>
 
@@ -285,7 +308,10 @@ export default function Home() {
 
                 </div>
 
-                <button className="w-full mt-6 bg-white text-black hover:bg-zinc-200 transition py-4 rounded-2xl font-medium flex items-center justify-center gap-2">
+                <button
+                  onClick={() => setSelectedCollege(college)}
+                  className="w-full mt-6 bg-white text-black hover:bg-zinc-200 transition py-4 rounded-2xl font-medium flex items-center justify-center gap-2"
+                >
 
                   View Details
 
@@ -402,6 +428,81 @@ export default function Home() {
 
       </section>
 
+      <section className="max-w-7xl mx-auto px-6 pb-28">
+
+        <div className="border border-white/10 bg-white/[0.03] rounded-[36px] p-8 md:p-10">
+
+          <div className="text-center">
+
+            <p className="text-zinc-500 text-sm mb-3">
+              Predictor Tool
+            </p>
+
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight">
+              College Predictor
+            </h2>
+
+            <p className="text-zinc-500 mt-4 max-w-2xl mx-auto">
+              Enter your exam rank and get AI-powered college recommendations.
+            </p>
+
+          </div>
+
+          <div className="max-w-2xl mx-auto mt-12">
+
+            <div className="grid md:grid-cols-2 gap-4">
+
+              <select
+                className="border border-white/10 bg-black/20 rounded-2xl px-5 py-4 outline-none"
+              >
+
+                <option>JEE Main</option>
+                <option>JEE Advanced</option>
+                <option>BITSAT</option>
+
+              </select>
+
+              <input
+                type="number"
+                placeholder="Enter your rank"
+                value={rank}
+                onChange={(e) => setRank(e.target.value)}
+                className="border border-white/10 bg-black/20 rounded-2xl px-5 py-4 outline-none placeholder:text-zinc-600"
+              />
+
+            </div>
+
+            <button
+              onClick={predictCollege}
+              className="w-full mt-5 bg-violet-500 hover:bg-violet-400 transition py-4 rounded-2xl font-medium"
+            >
+
+              Predict Colleges
+
+            </button>
+
+            {recommendation && (
+
+              <div className="mt-6 border border-violet-500/20 bg-violet-500/10 rounded-2xl p-5">
+
+                <p className="text-violet-300 text-sm">
+                  Recommended Colleges
+                </p>
+
+                <h3 className="text-xl font-semibold mt-3">
+                  {recommendation}
+                </h3>
+
+              </div>
+
+            )}
+
+          </div>
+
+        </div>
+
+      </section>
+
       <footer className="border-t border-white/5">
 
         <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -437,6 +538,126 @@ export default function Home() {
         </div>
 
       </footer>
+
+      {selectedCollege && (
+
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-6">
+
+          <div className="bg-[#111111] border border-white/10 rounded-[36px] max-w-2xl w-full p-8 relative">
+
+            <button
+              onClick={() => setSelectedCollege(null)}
+              className="absolute top-5 right-5 text-zinc-500 hover:text-white"
+            >
+
+              <X size={24} />
+
+            </button>
+
+            <div className="flex items-center justify-between">
+
+              <div>
+
+                <h2 className="text-4xl font-semibold">
+                  {selectedCollege.name}
+                </h2>
+
+                <div className="flex items-center gap-2 mt-3 text-zinc-500">
+
+                  <MapPin size={16} />
+
+                  <p>{selectedCollege.location}</p>
+
+                </div>
+
+              </div>
+
+              <div className="bg-white/5 border border-white/10 px-4 py-2 rounded-2xl">
+
+                ⭐ {selectedCollege.rating}
+
+              </div>
+
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 mt-10">
+
+              <div className="border border-white/10 bg-white/[0.03] rounded-2xl p-5">
+
+                <p className="text-zinc-500 text-sm">
+                  Total Fees
+                </p>
+
+                <h3 className="text-2xl font-semibold mt-3">
+                  {selectedCollege.fees}
+                </h3>
+
+              </div>
+
+              <div className="border border-white/10 bg-white/[0.03] rounded-2xl p-5">
+
+                <p className="text-zinc-500 text-sm">
+                  Avg Package
+                </p>
+
+                <h3 className="text-2xl font-semibold mt-3 text-emerald-400">
+                  {selectedCollege.package}
+                </h3>
+
+              </div>
+
+            </div>
+
+            <div className="mt-8">
+
+              <h3 className="text-2xl font-semibold">
+                Overview
+              </h3>
+
+              <p className="text-zinc-500 leading-relaxed mt-4">
+                {selectedCollege.name} is known for strong academics,
+                excellent placements, modern infrastructure and vibrant student life.
+              </p>
+
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4 mt-8">
+
+              <div className="border border-white/10 bg-white/[0.03] rounded-2xl p-5">
+
+                <h4 className="font-semibold text-lg">
+                  Popular Courses
+                </h4>
+
+                <ul className="mt-4 text-zinc-500 space-y-2">
+                  <li>• Computer Science</li>
+                  <li>• AI & Machine Learning</li>
+                  <li>• Electronics</li>
+                  <li>• Data Science</li>
+                </ul>
+
+              </div>
+
+              <div className="border border-white/10 bg-white/[0.03] rounded-2xl p-5">
+
+                <h4 className="font-semibold text-lg">
+                  Student Reviews
+                </h4>
+
+                <p className="text-zinc-500 mt-4 leading-relaxed">
+                  Students praise the placements, coding culture,
+                  internships and campus opportunities.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      )}
 
     </main>
   );
